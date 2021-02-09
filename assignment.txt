@@ -1,0 +1,139 @@
+1. 1) O(1)
+   2) O(n)
+
+
+2. What is the Big O of the following algorithm? Explain your answer
+
+function isEven(value) {
+    if (value % 2 === 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+    O(1) because it always does the same number of opperations
+
+3. What is the Big O of the following algorithm? Explain your answer
+
+function areYouHere(arr1, arr2) {
+    for (let i = 0; i < arr1.length; i++) {
+        const el1 = arr1[i];
+        for (let j = 0; j < arr2.length; j++) {
+            const el2 = arr2[j];
+            if (el1 === el2) return true;
+        }
+    }
+    return false;
+}
+
+    O(n^2) because it has to go through 2 sets of data possibly all the way through
+
+4. What is the Big O of the following algorithm? Explain your answer
+
+function doubleArrayValues(array) {
+    for (let i = 0; i < array.length; i++) {
+        array[i] *= 2;
+    }
+    return array;
+}
+
+    O(n) because looping over an array is linear and multiplying the value is constant
+
+5. Naive search
+What is the Big O of the following algorithm? Explain your answer
+
+function naiveSearch(array, item) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === item) {
+            return i;
+        }
+    }
+}
+
+    O(n) because looping through the array is linear and the comparison is constant
+
+6. What is the Big O of the following algorithm? Explain your answer
+
+function createPairs(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        for(let j = i + 1; j < arr.length; j++) {
+            console.log(arr[i] + ", " +  arr[j] );
+        }
+    }
+}
+
+    O(n^2) because we are looping through the array once for every item
+
+7. What does the following algorithm do? What is its runtime complexity? Explain your answer
+
+function compute(num) {
+    let result = [];
+    for (let i = 1; i <= num; i++) {
+
+        if (i === 1) {
+            result.push(0);
+        }
+        else if (i === 2) {
+            result.push(1);
+        }
+        else {
+            result.push(result[i - 2] + result[i - 3]);
+        }
+    }
+    return result;
+}
+
+    This gives you the nth term of the fibonacci sequence. it starts with 1 and 2 and then adds the previous 2 values together.
+    O(n) because the loop is linear and the expressions are constants
+
+8. In this example, we return to the problem of searching using a more sophisticated approach than in naive search, above. Assume that the input array is always sorted. What is the Big O of the following algorithm? Explain your answer
+
+function efficientSearch(array, item) {
+    let minIndex = 0;
+    let maxIndex = array.length - 1;
+    let currentIndex;
+    let currentElement;
+
+    while (minIndex <= maxIndex) {
+        currentIndex = Math.floor((minIndex + maxIndex) / 2);
+        currentElement = array[currentIndex];
+
+        if (currentElement < item) {
+            minIndex = currentIndex + 1;
+        }
+        else if (currentElement > item) {
+            maxIndex = currentIndex - 1;
+        }
+        else {
+            return currentIndex;
+        }
+    }
+    return -1;
+}
+
+    O(logn) because it cuts the search in half every time it loops
+
+9. What is the Big O of the following algorithm? Explain your answer
+
+function findRandomElement(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+    O(1) because this will always take the same amount of time regardless of array size
+
+10. What does the following algorithm do? What is the Big O of the following algorithm? Explain your answer
+
+function isWhat(n) {
+    if (n < 2 || n % 1 !== 0) {
+        return false;
+    }
+    for (let i = 2; i < n; ++i) {
+        if (n % i === 0) return false;
+    }
+    return true;
+}
+
+    It is looking for prime numbers.
+    O(n) because time goes up linearly as the number gets bigger.
